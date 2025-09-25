@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html'
+  selector: 'app-skills',
+  templateUrl: './skills.component.html'
 })
-export class AboutComponent implements OnInit {
+export class SkillsComponent implements OnInit {
+  skillsProgress = {
+    dotnet: '0%',
+    angular: '0%',
+    database: '0%',
+    cloud: '0%'
+  };
+
   ngOnInit() {
     this.initScrollAnimations();
+    this.animateProgressBars();
   }
 
   initScrollAnimations() {
@@ -20,5 +28,16 @@ export class AboutComponent implements OnInit {
     }, { threshold: 0.1 });
     
     elements.forEach(element => observer.observe(element));
+  }
+
+  animateProgressBars() {
+    setTimeout(() => {
+      this.skillsProgress = {
+        dotnet: '95%',
+        angular: '90%',
+        database: '88%',
+        cloud: '82%'
+      };
+    }, 500);
   }
 }
